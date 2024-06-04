@@ -10,7 +10,7 @@
     <Company>ProjectHax LLC</Company>
     <PackageProjectUrl>https://projecthax.com</PackageProjectUrl>
     <PackageIcon>charging-3.png</PackageIcon>
-    <Copyright>Copyright(c) ProjectHax LLC 2023</Copyright>
+    <Copyright>Copyright(c) ProjectHax LLC 2024</Copyright>
     <Description>Windows NUT GUI</Description>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
     <UseWindowsForms>True</UseWindowsForms>
@@ -20,7 +20,7 @@
     <AssemblyName>wnut</AssemblyName>
   </PropertyGroup>
 
-  <PropertyGroup><ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles><ApplicationManifest>app.manifest</ApplicationManifest><NeutralLanguage>en</NeutralLanguage><Authors>$(AssemblyName)</Authors></PropertyGroup>
+  <PropertyGroup><ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles><ApplicationManifest>app.manifest</ApplicationManifest><NeutralLanguage>en</NeutralLanguage><Authors>$(AssemblyName)</Authors><FileVersion>1.0.1.0</FileVersion><AssemblyVersion>1.0.1.0</AssemblyVersion></PropertyGroup>
 
   <ItemGroup>
     <Content Include="charging-3.ico" />

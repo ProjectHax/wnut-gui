@@ -27,7 +27,7 @@ namespace wnut_gui
                     byte[] buf = new byte[8192];
                     int size = client.Client.Send(Encoding.UTF8.GetBytes(data + "\n"));
                     if (size <= 0)
-                        throw (new Exception());
+                        throw (new Exception("Connection error"));
                     return true;
                 }
                 catch (Exception)
@@ -58,15 +58,15 @@ namespace wnut_gui
 
                 if (result.StartsWith("BEGIN LIST"))
                 {
-                    result = string.Empty;
+                    result = result.Substring(result.IndexOf("\n") + 1);
 
-                    do
+                    while (!result.Contains("END LIST"))
                     {
                         size = client.Client.Receive(buf, SocketFlags.None);
                         if (size <= 0)
-                            throw (new Exception("Not connected"));
+                            throw (new Exception("Connection error"));
                         result += Encoding.UTF8.GetString(buf, 0, size);
-                    } while (!result.Contains("END LIST"));
+                    }
 
                     result = result.Substring(0, result.IndexOf("END LIST") - 1);
                 }
@@ -83,7 +83,6 @@ namespace wnut_gui
                 return string.Empty;
             }
         }
-
         public bool connect(string host, int port)
         {
             disconnect();
@@ -91,7 +90,7 @@ namespace wnut_gui
             client = new TcpClient();
             try
             {
-                if (!client.ConnectAsync(host, port).Wait(2000))
+                if (!client.ConnectAsync(host, port).Wait(5000))
                     throw (new Exception());
             }
             catch (Exception)
